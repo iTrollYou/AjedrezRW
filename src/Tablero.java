@@ -4,7 +4,7 @@ public class Tablero {
     public Jugador jugador1;
     public Jugador jugador2;
     public Jugador turnoJugador;
-    private static Tablero miTablero = null;
+    private static Tablero miTablero;
     private Ficha[][] matrix = null;
 
     //private static final String FILENAME = "PGuardada.txt";
@@ -59,10 +59,13 @@ public class Tablero {
         //Da la opciÃ³n de continuar con la partida guardada en el fichero o iniciar una nueva partida
         if (menu.equals("2")) {
             fichero.cargarPartida();
-        } else if (menu.equals("1")) { //Nueva partida
+
+        } else if (menu.equals("1")) {
             this.nuevaPartida();
+
         } else {
             System.out.println("Error de formato");
+
         }
 
         boolean fin = false;
@@ -72,15 +75,15 @@ public class Tablero {
             System.out.println("Turno de: " + this.turnoJugador.getNombre());
 
 
-            Ficha ficha = this.seleccionarPieza();
+            Ficha posicionIncial = this.seleccionarPieza();
 
-            if (ficha != null) {
+            if (posicionIncial != null) {
                 Posicion posicionDestino = this.seleccionarPosicionDestino();
                 boolean esRey = false;
                 if (this.matrix[posicionDestino.getFila()][posicionDestino.getColumna()] instanceof Rey) {
                     esRey = true;
                 }
-                boolean fichaMovida = ficha.realizarMovimiento(posicionDestino);
+                boolean fichaMovida = posicionIncial.realizarMovimiento(posicionDestino);
                 //System.out.println(fichaMovida);
                 if (fichaMovida) {
 
