@@ -76,12 +76,7 @@ public abstract class Ficha {
     
     public boolean posFinalCorrecta(int pFila2, int pColumna2) {
 		Ficha[][] matrix = Tablero.getTablero().getMatriz();
-
-		boolean correcto = false;
-		if(matrix[pFila2][pColumna2] == null || matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()) {
-			correcto = true;
-		}
-		return correcto;
+		return ((matrix[pFila2][pColumna2] == null) || (matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()));
 	}
 
     public String getTipoFicha(){

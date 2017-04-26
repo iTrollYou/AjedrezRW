@@ -63,8 +63,8 @@ public class Fichero {
 		String[] fichas;
 		int turnoJugador;
 
-		Jugador jugad1 = Tablero.getTablero().getJug1();
-		Jugador jugad2 = Tablero.getTablero().getJug2();
+		Jugador jugad1;
+		Jugador jugad2 ;
 
 		texto  = Fichero.leerFichero(Fichero.filename).split("\n");	
 
@@ -210,7 +210,6 @@ public class Fichero {
 			archivo.close();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
