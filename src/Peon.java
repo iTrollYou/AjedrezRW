@@ -40,7 +40,7 @@ public class Peon extends Ficha {
                                 if (matrix[pFila2][pColumna2] != null && matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()) {
                                     correcto = true;
                                     if (pFila2 == 7) //Coronacion blanco
-                                        peonTo(posicionDestino);
+                                        peonTo(posicionInicial);
                                 }
                             }
                         }
@@ -51,15 +51,15 @@ public class Peon extends Ficha {
                         if (offsetX == 0 && ((absOffsetY == 1) || (absOffsetY == 2 && pFila1 == 6))) {
                             if (matrix[pFila2][pColumna2] == null) {
                                 correcto = true;
-                                if (pFila2 == 1) //Coronacion blanco
-                                    peonTo(posicionDestino);
+                                if (pFila2 == 0) //Coronacion negro
+                                    peonTo(posicionInicial);
                             }
                         } else {
                             if (absOffsetX == absOffsetY && absOffsetX == 1) {
                                 if (matrix[pFila2][pColumna2] != null && matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()) {
                                     correcto = true;
-                                    if (pFila2 == 1) //Coronacion blanco
-                                        peonTo(posicionDestino);
+                                    if (pFila2 == 0) //Coronacion negro
+                                        peonTo(posicionInicial);
                                 }
                             }
                         }
