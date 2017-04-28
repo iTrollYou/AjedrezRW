@@ -336,9 +336,9 @@ public class Tablero {
         }
 
         this.matrix[0][0] = new Torre(jb, new Posicion(0, 0));
-        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
-        this.matrix[0][2] = new Alfil(jb, new Posicion(0, 2));
-        this.matrix[0][3] = new Reina(jb, new Posicion(0, 3));
+//        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
+//        this.matrix[0][2] = new Alfil(jb, new Posicion(0, 2));
+//        this.matrix[0][3] = new Reina(jb, new Posicion(0, 3));
         this.matrix[0][4] = new Rey(jb, new Posicion(0, 4));
         this.matrix[0][5] = new Alfil(jb, new Posicion(0, 5));
         this.matrix[0][6] = new Caballo(jb, new Posicion(0, 6));
