@@ -124,7 +124,7 @@ public abstract class Ficha {
 
             matrix[filaInicial][columnaInicial] = null;
 
-            if (ficha instanceof Rey) { //2 movs rey y torre
+            if (ficha instanceof Rey) { //(2 movs) rey y torre
                 if (((Rey) ficha).getEnroque()) { //ENROQUE LARGO
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;

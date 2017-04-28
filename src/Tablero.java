@@ -31,7 +31,7 @@ public class Tablero {
         this.matrix = pMatriz;
     }
 
-    public  Jugador getTurnoJugador() {
+    public Jugador getTurnoJugador() {
         return this.turnoJugador;
     }
 
@@ -54,7 +54,7 @@ public class Tablero {
         //correspondientes cambios y muestra actualizado el tablero
 
         Fichero fichero = Fichero.getFichero();
-        String menu = "1";//this.animacionInicial();
+        String menu = this.animacionInicial();//;
 
         //Da la opciÃ³n de continuar con la partida guardada en el fichero o iniciar una nueva partida
         if (menu.equals("2")) {
@@ -133,7 +133,7 @@ public class Tablero {
         this.inicializarPiezas();
     }
 
-    /*private String animacionInicial() {
+    private String animacionInicial() {
 
         String menu = "Error";
 
@@ -285,7 +285,7 @@ public class Tablero {
         return menu;
 
 
-    }*/
+    }
 
     private Ficha seleccionarPieza() {
         Ficha ficha;
@@ -334,45 +334,45 @@ public class Tablero {
         } else {
             jn = this.jugador1;
         }
-
-        this.matrix[6][5] = new Peon(jb, new Posicion(6, 5));
-        this.matrix[2][3] = new Peon(jb, new Posicion(2, 3));
+//Pruebas
+//        this.matrix[6][5] = new Peon(jb, new Posicion(6, 5));
+//        this.matrix[2][3] = new Peon(jb, new Posicion(2, 3));
 
         this.matrix[0][0] = new Torre(jb, new Posicion(0, 0));
-//        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
-//        this.matrix[0][2] = new Alfil(jb, new Posicion(0, 2));
-//        this.matrix[0][3] = new Reina(jb, new Posicion(0, 3));
-//        this.matrix[0][4] = new Rey(jb, new Posicion(0, 4));
-//        this.matrix[0][5] = new Alfil(jb, new Posicion(0, 5));
-//        this.matrix[0][6] = new Caballo(jb, new Posicion(0, 6));
-//        this.matrix[0][7] = new Torre(jb, new Posicion(0, 7));
+        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
+        this.matrix[0][2] = new Alfil(jb, new Posicion(0, 2));
+        this.matrix[0][3] = new Reina(jb, new Posicion(0, 3));
+        this.matrix[0][4] = new Rey(jb, new Posicion(0, 4));
+        this.matrix[0][5] = new Alfil(jb, new Posicion(0, 5));
+        this.matrix[0][6] = new Caballo(jb, new Posicion(0, 6));
+        this.matrix[0][7] = new Torre(jb, new Posicion(0, 7));
 
-//        this.matrix[1][0] = new Peon(jb, new Posicion(1, 0));
-//        this.matrix[1][1] = new Peon(jb, new Posicion(1, 1));
-//        this.matrix[1][2] = new Peon(jb, new Posicion(1, 2));
-//        this.matrix[1][3] = new Peon(jb, new Posicion(1, 3));
-//        this.matrix[1][4] = new Peon(jb, new Posicion(1, 4));
-//        this.matrix[1][5] = new Peon(jb, new Posicion(1, 5));
-//        this.matrix[1][6] = new Peon(jb, new Posicion(1, 6));
-//        this.matrix[1][7] = new Peon(jb, new Posicion(1, 7));
-//
-//        this.matrix[6][0] = new Peon(jn, new Posicion(6, 0));
-//        this.matrix[6][1] = new Peon(jn, new Posicion(6, 1));
-//        this.matrix[6][2] = new Peon(jn, new Posicion(6, 2));
-//        this.matrix[6][3] = new Peon(jn, new Posicion(6, 3));
-//        this.matrix[6][4] = new Peon(jn, new Posicion(6, 4));
-//        this.matrix[6][5] = new Peon(jn, new Posicion(6, 5));
-//        this.matrix[6][6] = new Peon(jn, new Posicion(6, 6));
-//        this.matrix[6][7] = new Peon(jn, new Posicion(6, 7));
+        this.matrix[1][0] = new Peon(jb, new Posicion(1, 0));
+        this.matrix[1][1] = new Peon(jb, new Posicion(1, 1));
+        this.matrix[1][2] = new Peon(jb, new Posicion(1, 2));
+        this.matrix[1][3] = new Peon(jb, new Posicion(1, 3));
+        this.matrix[1][4] = new Peon(jb, new Posicion(1, 4));
+        this.matrix[1][5] = new Peon(jb, new Posicion(1, 5));
+        this.matrix[1][6] = new Peon(jb, new Posicion(1, 6));
+        this.matrix[1][7] = new Peon(jb, new Posicion(1, 7));
+
+        this.matrix[6][0] = new Peon(jn, new Posicion(6, 0));
+        this.matrix[6][1] = new Peon(jn, new Posicion(6, 1));
+        this.matrix[6][2] = new Peon(jn, new Posicion(6, 2));
+        this.matrix[6][3] = new Peon(jn, new Posicion(6, 3));
+        this.matrix[6][4] = new Peon(jn, new Posicion(6, 4));
+        this.matrix[6][5] = new Peon(jn, new Posicion(6, 5));
+        this.matrix[6][6] = new Peon(jn, new Posicion(6, 6));
+        this.matrix[6][7] = new Peon(jn, new Posicion(6, 7));
 
         this.matrix[7][0] = new Torre(jn, new Posicion(7, 0));
-//        this.matrix[7][1] = new Caballo(jn, new Posicion(7, 1));
-//        this.matrix[7][2] = new Alfil(jn, new Posicion(7, 2));
-//        this.matrix[7][3] = new Reina(jn, new Posicion(7, 3));
+        this.matrix[7][1] = new Caballo(jn, new Posicion(7, 1));
+        this.matrix[7][2] = new Alfil(jn, new Posicion(7, 2));
+        this.matrix[7][3] = new Reina(jn, new Posicion(7, 3));
         this.matrix[7][4] = new Rey(jn, new Posicion(7, 4));
-//        this.matrix[7][5] = new Alfil(jn, new Posicion(7, 5));
-//        this.matrix[7][6] = new Caballo(jn, new Posicion(7, 6));
-//        this.matrix[7][7] = new Torre(jn, new Posicion(7, 7));
+        this.matrix[7][5] = new Alfil(jn, new Posicion(7, 5));
+        this.matrix[7][6] = new Caballo(jn, new Posicion(7, 6));
+        this.matrix[7][7] = new Torre(jn, new Posicion(7, 7));
     }
 
     private int letraToNum(char pLetra) {
