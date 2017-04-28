@@ -48,7 +48,7 @@ public class Rey extends Ficha {
     private boolean enroqueLargo(Posicion posicionInicial, Posicion posicionDestino) {
 
         int pFila1 = posicionInicial.getFila();
-        //int pFila2 = posicionDestino.getFila();
+
         int pColumna1 = posicionInicial.getColumna();
         int pColumna2 = posicionDestino.getColumna();
 
