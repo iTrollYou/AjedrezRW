@@ -39,6 +39,7 @@ public class Rey extends Ficha {
         if (pFila1 != pFila2 || pColumna1 != pColumna2) {
             if (absOffsetX < 2 && absOffsetY < 2) {
                 correcto = posFinalCorrecta(pFila2, pColumna2);
+                setPrimerMov(true);
             }
 
         }
