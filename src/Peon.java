@@ -81,20 +81,25 @@ public class Peon extends Ficha {
         int pColumna = pos.getColumna();
         String ficha = Teclado.leerString("¿Qué ficha quieres ser?: ");
         ficha = ficha.toUpperCase();
-        Ficha fNueva = null;
+        Ficha fNueva ;
         if (ficha.equals("TORRE")) {
             fNueva = new Torre(Tablero.getTablero().getTurnoJugador(), pos);
+            matrix[pFila][pColumna] = fNueva;
         } else if (ficha.equals("CABALLO")) {
             fNueva = new Caballo(Tablero.getTablero().getTurnoJugador(), pos);
+            matrix[pFila][pColumna] = fNueva;
         } else if (ficha.equals("REINA")) {
             fNueva = new Reina(Tablero.getTablero().getTurnoJugador(), pos);
+            matrix[pFila][pColumna] = fNueva;
         } else if (ficha.equals("ALFIL")) {
             fNueva = new Alfil(Tablero.getTablero().getTurnoJugador(), pos);
+            matrix[pFila][pColumna] = fNueva;
         } else {
             System.out.println("No puedes ser esa pieza");
             peonTo(pos);
         }
-        Tablero.getTablero().getMatriz()[pFila][pColumna] = fNueva;
+
+        //Tablero.getTablero().setMatriz(matrix);
 
     }
 

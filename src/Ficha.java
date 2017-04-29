@@ -37,48 +37,20 @@ public abstract class Ficha {
         int absOffsetX = Math.abs(pColumna2 - pColumna1);
         int absOffsetY = Math.abs(pFila2 - pFila1);
 
-        if (absOffsetX == absOffsetY) {
-            if ((offsetX > 0 && offsetY < 0) || (offsetX < 0 && offsetY > 0)) { //Diagonal con pendiente positiva
-                int filaMenor = Math.min(pFila1, pFila2);
-                int columnaMayor = Math.max(pColumna1, pColumna2);
-                int i = 1;
-                while (i < absOffsetY && correcto) {
-                    if (matrix[filaMenor + i][columnaMayor - i] != null) {
-                        correcto = false;
-                    }
-                    i++;
-                }
-            } else {//Diagonal con pendiente negativa
-                int filaMenor = Math.min(pFila1, pFila2);
-                int columnaMenor = Math.min(pColumna1, pColumna2);
-
-                int i = 1;
-                while (i < absOffsetY && correcto) {
-                    if (matrix[filaMenor + i][columnaMenor + i] != null) {
-                        correcto = false;
-                    }
-                    i++;
-                }
+        if (offsetY == 0) { //Horizontal
+            for (int i = 1; i < Math.abs(offsetX); i++) {
+                if (matrix[pFila1][pColumna1 + (offsetX < 0 ? -i : i)] != null)
+                    correcto = false;
             }
-        } else {
-            if (absOffsetX == 0) { //Movimiento vertical
-                int filaMenor = Math.min(pFila1, pFila2);
-                int i = 1;
-                while (i < absOffsetY && correcto) {
-                    if (matrix[filaMenor + i][pColumna1] != null) {
-                        correcto = false;
-                    }
-                    i++;
-                }
-            } else { //Movimiento horizontal
-                int columnaMenor = Math.min(pColumna1, pColumna2);
-                int i = 1;
-                while (i < absOffsetX && correcto) {
-                    if (matrix[pFila1][columnaMenor + i] != null) {
-                        correcto = false;
-                    }
-                    i++;
-                }
+        } else if (offsetX == 0) { //Vertical
+            for (int i = 1; i < absOffsetY; i++) {
+                if (matrix[pFila1 + (offsetY < 0 ? -i : i)][pColumna1] != null)
+                    correcto = false;
+            }
+        } else if (Math.abs(offsetY) == absOffsetX) {//Diagonal
+            for (int i = 1; i < Math.abs(offsetX); i++) {
+                if (matrix[pFila1 + (offsetY < 0 ? -i : i)][pColumna1 + (offsetX < 0 ? -i : i)] != null)
+                    correcto = false;
             }
         }
         return correcto;
@@ -131,10 +103,64 @@ public abstract class Ficha {
                 }
                 //Aqui enroque corto
             }
+
             Tablero.getTablero().setMatriz(matrix);
+
 
         }
 
         return movimientoCorrecto;
     }
+
+//    private boolean check() { //... falta
+//        Ficha[][] matrix = Tablero.getTablero().getMatriz();
+//        boolean correcto = true;
+//        Posicion rey = null;
+//        bucle:
+//        for (int i = 0; i < 8; i++) { //Localizar los reyes
+//            for (int j = 0; j < 8; j++) {
+//                if (matrix[i][j] instanceof Rey) {
+//                    if (matrix[i][j].getJugador() == Tablero.getTablero().getTurnoJugador()) {
+//                        rey = new Posicion(i, j);
+//                        break bucle;
+//                    }
+//                }
+//            }
+//        }
+//        for (int i = 0; i < 8; i++) { // Comprobar si alguna pieza puede comerlo
+//            for (int j = 0; j < 8; j++) {
+//                Posicion tmp = new Posicion(i, j);
+//                if (matrix[i][j] == null) {
+//
+//                } else if (matrix[i][j] instanceof Peon) {
+//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
+//                        //cambiarJugador();
+//                        if (comprobarMovimiento(tmp, rey))
+//                            correcto = false;
+//                    }
+//                } else if (matrix[i][j] instanceof Reina) {
+//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
+//                        if (comprobarMovimiento(tmp, rey))
+//                            correcto = false;
+//                    }
+//                } else if (matrix[i][j] instanceof Alfil) {
+//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
+//                        if (comprobarMovimiento(tmp, rey))
+//                            correcto = false;
+//                    }
+//                } else if (matrix[i][j] instanceof Caballo) {
+//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
+//                        if (comprobarMovimiento(tmp, rey))
+//                            correcto = false;
+//                    }
+//                } else {
+//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
+//                        if (comprobarMovimiento(tmp, rey))
+//                            correcto = false;
+//                    }
+//                }
+//            }
+//        }
+//        return correcto;
+//    }
 }
