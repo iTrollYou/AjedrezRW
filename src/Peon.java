@@ -5,6 +5,7 @@ public class Peon extends Ficha {
         super(pJugador, pPosicion);
     }
 
+    @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
 
         Ficha[][] matrix = Tablero.getTablero().getMatriz();
@@ -33,14 +34,14 @@ public class Peon extends Ficha {
                                 correcto = true;
 
                                 if (pFila2 == 7) //Coronacion blanco
-                                    peonTo(posicionInicial);
+                                    this.peonTo(posicionInicial);
                             }
                         } else {
                             if (absOffsetX == offsetY && absOffsetX == 1) {
                                 if (matrix[pFila2][pColumna2] != null && matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()) {
                                     correcto = true;
                                     if (pFila2 == 7) //Coronacion blanco
-                                        peonTo(posicionInicial);
+                                        this.peonTo(posicionInicial);
                                 }
                             }
                         }
@@ -52,14 +53,14 @@ public class Peon extends Ficha {
                             if (matrix[pFila2][pColumna2] == null) {
                                 correcto = true;
                                 if (pFila2 == 0) //Coronacion negro
-                                    peonTo(posicionInicial);
+                                    this.peonTo(posicionInicial);
                             }
                         } else {
                             if (absOffsetX == absOffsetY && absOffsetX == 1) {
                                 if (matrix[pFila2][pColumna2] != null && matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()) {
                                     correcto = true;
                                     if (pFila2 == 0) //Coronacion negro
-                                        peonTo(posicionInicial);
+                                        this.peonTo(posicionInicial);
                                 }
                             }
                         }
@@ -82,24 +83,29 @@ public class Peon extends Ficha {
         String ficha = Teclado.leerString("¿Qué ficha quieres ser?: ");
         ficha = ficha.toUpperCase();
         Ficha fNueva;
-        if (ficha.equals("TORRE")) {
-            fNueva = new Torre(Tablero.getTablero().getTurnoJugador(), pos);
-            matrix[pFila][pColumna] = fNueva;
-        } else if (ficha.equals("CABALLO")) {
-            fNueva = new Caballo(Tablero.getTablero().getTurnoJugador(), pos);
-            matrix[pFila][pColumna] = fNueva;
-        } else if (ficha.equals("REINA")) {
-            fNueva = new Reina(Tablero.getTablero().getTurnoJugador(), pos);
-            matrix[pFila][pColumna] = fNueva;
-        } else if (ficha.equals("ALFIL")) {
-            fNueva = new Alfil(Tablero.getTablero().getTurnoJugador(), pos);
-            matrix[pFila][pColumna] = fNueva;
-        } else {
-            System.out.println("No puedes ser esa pieza");
-            peonTo(pos);
+        switch (ficha) {
+            case "TORRE":
+                fNueva = new Torre(Tablero.getTablero().getTurnoJugador(), pos);
+                matrix[pFila][pColumna] = fNueva;
+                break;
+            case "CABALLO":
+                fNueva = new Caballo(Tablero.getTablero().getTurnoJugador(), pos);
+                matrix[pFila][pColumna] = fNueva;
+                break;
+            case "REINA":
+                fNueva = new Reina(Tablero.getTablero().getTurnoJugador(), pos);
+                matrix[pFila][pColumna] = fNueva;
+                break;
+            case "ALFIL":
+                fNueva = new Alfil(Tablero.getTablero().getTurnoJugador(), pos);
+                matrix[pFila][pColumna] = fNueva;
+                break;
+            default:
+                System.out.println("No puedes ser esa pieza");
+                this.peonTo(pos);
+                break;
         }
 
-        //Tablero.getTablero().setMatriz(matrix);
 
     }
 

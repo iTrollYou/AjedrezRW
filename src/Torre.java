@@ -4,7 +4,8 @@ public class Torre extends Ficha {
     public Torre(Jugador pJugador, Posicion pPosicion) {
         super(pJugador, pPosicion);
     }
-
+    public Torre(){} //Comprobacion de movimiento reina
+    @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
 
         int pFila1 = posicionInicial.getFila();
@@ -17,16 +18,13 @@ public class Torre extends Ficha {
         int offsetX = pColumna2 - pColumna1;
         int offsetY = pFila2 - pFila1;
 
-
-        if (pFila1 != pFila2 || pColumna1 != pColumna2) {
-            if ((offsetX == 0 && offsetY != 0) || (offsetX != 0 && offsetY == 0)) {
-                correcto = super.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2);
-                if (correcto) {
-                    correcto = super.posFinalCorrecta(pFila2, pColumna2);
+        if ((offsetX == 0) || (offsetY == 0)) {
+                if (this.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)) {
+                    correcto = this.posFinalCorrecta(pFila2, pColumna2);
                     setPrimerMov(true);
                 }
             }
-        }
+
         return correcto;
     }
 

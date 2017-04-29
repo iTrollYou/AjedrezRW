@@ -3,12 +3,14 @@ public abstract class Ficha {
     //Atributos
     private Jugador jugador;
     private Posicion posicion;
-    private boolean primerMov;
+    private boolean primerMov ;
 
     public Ficha(Jugador pJugador, Posicion pPosicion) {
         this.jugador = pJugador;
         this.posicion = pPosicion;
+        this.primerMov = false;
     }
+    public Ficha(){} //Comprobacion de movimiento reina
 
 
     public abstract boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino);

@@ -61,7 +61,7 @@ public class Tablero {
         //correspondientes cambios y muestra actualizado el tablero
 
         Fichero fichero = Fichero.getFichero();
-        String menu = this.animacionInicial();//this.animacionInicial();
+        String menu = "1";//this.animacionInicial();
 
         //Da la opciÃ³n de continuar con la partida guardada en el fichero o iniciar una nueva partida
         switch (menu) {
@@ -357,8 +357,8 @@ public class Tablero {
             jn = this.jugador1;
         }
 //Pruebas
-//        this.matrix[6][5] = new Peon(jb, new Posicion(6, 5));
-//        this.matrix[2][3] = new Peon(jn, new Posicion(2, 3));
+        this.matrix[6][5] = new Peon(jb, new Posicion(6, 5));
+        this.matrix[2][3] = new Peon(jn, new Posicion(2, 3));
 //
         this.matrix[0][0] = new Torre(jb, new Posicion(0, 0));
 //        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
@@ -367,7 +367,7 @@ public class Tablero {
         this.matrix[0][4] = new Rey(jb, new Posicion(0, 4));
 //        this.matrix[0][5] = new Alfil(jb, new Posicion(0, 5));
 //        this.matrix[0][6] = new Caballo(jb, new Posicion(0, 6));
-//        this.matrix[0][7] = new Torre(jb, new Posicion(0, 7));
+        this.matrix[0][7] = new Torre(jb, new Posicion(0, 7));
 
 //        this.matrix[1][0] = new Peon(jb, new Posicion(1, 0));
 //        this.matrix[1][1] = new Peon(jb, new Posicion(1, 1));

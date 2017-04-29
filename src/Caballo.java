@@ -5,6 +5,7 @@ public class Caballo extends Ficha {
         super(pJugador, pPosicion);
     }
 
+    @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
 
         int pFila1 = posicionInicial.getFila();
@@ -21,7 +22,7 @@ public class Caballo extends Ficha {
 
         if (pFila1 != pFila2 || pColumna1 != pColumna2) {
             if (offsetX != 0 && offsetY != 0 && absOffsetX + absOffsetY == 3) {
-                correcto = posFinalCorrecta(pFila2, pColumna2);
+                correcto = this.posFinalCorrecta(pFila2, pColumna2);
             }
 
         }

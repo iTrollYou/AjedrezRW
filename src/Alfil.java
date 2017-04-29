@@ -4,30 +4,28 @@ public class Alfil extends Ficha {
     public Alfil(Jugador pJugador, Posicion pPosicion) {
         super(pJugador, pPosicion);
     }
+    public Alfil(){} //Comprobacion de movimiento reina
 
+    @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
+        boolean correcto = false;
 
         int pFila1 = posicionInicial.getFila();
         int pFila2 = posicionDestino.getFila();
         int pColumna1 = posicionInicial.getColumna();
         int pColumna2 = posicionDestino.getColumna();
+        int columDist = pColumna2 - pColumna1;
+        int filaDist = pFila2 - pFila1;
 
-        boolean correcto = false;
-
-        int absOffsetX = Math.abs(pColumna2 - pColumna1);
-        int absOffsetY = Math.abs(pFila2 - pFila1);
-
-        if (pFila1 != pFila2 || pColumna1 != pColumna2) {
-            if (absOffsetX == absOffsetY) {
-                correcto = this.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2);
-                if (correcto) {
-                    correcto = posFinalCorrecta(pFila2, pColumna2);
-                }
-            }
+        if (Math.abs(columDist) == Math.abs(filaDist)) {
+            if (this.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)
+                    && this.posFinalCorrecta(pFila2, pColumna2))
+                correcto = true;
         }
-
         return correcto;
+
     }
+
 
     public String getIcono() {
         String icono;
