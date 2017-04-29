@@ -4,7 +4,7 @@ public class Alfil extends Ficha {
     public Alfil(Jugador pJugador, Posicion pPosicion) {
         super(pJugador, pPosicion);
     }
-    public Alfil(){} //Comprobacion de movimient reina
+    public Alfil(){} //Comprobacion de movimiento reina
 
     @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
