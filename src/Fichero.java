@@ -71,7 +71,7 @@ public class Fichero {
             colorJug1 = Color.WHITE;
         }
         jugad1 = new Jugador(colorJug1, jugador1[0]);
-        //Tablero.getTablero().setJugador1(jugad1);
+        Tablero.getTablero().setJugador1(jugad1);
 
         jugador2 = texto[1].split("/");
         int colorJugador2 = Integer.parseInt(jugador2[1]);
@@ -82,7 +82,7 @@ public class Fichero {
             colorJug2 = Color.WHITE;
         }
         jugad2 = new Jugador(colorJug2, jugador2[0]);
-        //Tablero.getTablero().setJugador2(jugad2);
+        Tablero.getTablero().setJugador2(jugad2);
 
         turnoJugador = Integer.parseInt(texto[2]);
         if (turnoJugador == 1) {

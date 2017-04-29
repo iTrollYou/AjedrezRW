@@ -47,6 +47,12 @@ public class Tablero {
         return this.jugador2;
     }
 
+    public void setJugador2(Jugador jugador2) {
+        this.jugador2 = jugador2;
+    }
+    public void setJugador1(Jugador jugador1) {
+        this.jugador1 = jugador1;
+    }
 
     public void jugarPartida() {
         // Inicia el juego si no se ha iniciado y
@@ -54,7 +60,7 @@ public class Tablero {
         //correspondientes cambios y muestra actualizado el tablero
 
         Fichero fichero = Fichero.getFichero();
-        String menu = "1";//this.animacionInicial();
+        String menu = "2";//this.animacionInicial();
 
         //Da la opciÃ³n de continuar con la partida guardada en el fichero o iniciar una nueva partida
         if (menu.equals("2")) {
@@ -110,18 +116,22 @@ public class Tablero {
         //this.jugador2 = new Jugador(Color.BLACK, j2); //Jugador2 = Negras
         //Quien empieza aleatorio
         //System.out.println();
-        int x = (int) (Math.random() * 100);
-        if (x % 2 == 0) {
-            System.out.println("Empieza " + j1);
-            this.jugador1 = new Jugador(Color.WHITE, j1); //Jugador1 = Blancas
-            this.jugador2 = new Jugador(Color.BLACK, j2); //Jugador2 = Negras
-            this.turnoJugador = this.jugador1;
-        } else {
-            System.out.println("Empieza " + j2);
-            this.jugador2 = new Jugador(Color.WHITE, j2); //Jugador2 = Blancas
-            this.jugador1 = new Jugador(Color.BLACK, j1); //Jugador1 = Negras
-            this.turnoJugador = this.jugador2;
-        }
+        System.out.println("Empieza " + j1);
+        this.jugador1 = new Jugador(Color.WHITE, j1); //Jugador1 = Blancas
+        this.jugador2 = new Jugador(Color.BLACK, j2); //Jugador2 = Negras
+        this.turnoJugador = this.jugador1;
+//        int x = (int) (Math.random() * 100); //No va bien , problema a la hora de cargar partida
+//        if (x % 2 == 0) {
+//            System.out.println("Empieza " + j1);
+//            this.jugador1 = new Jugador(Color.WHITE, j1); //Jugador1 = Blancas
+//            this.jugador2 = new Jugador(Color.BLACK, j2); //Jugador2 = Negras
+//            this.turnoJugador = this.jugador1;
+//        } else {
+//            System.out.println("Empieza " + j2);
+//            this.jugador2 = new Jugador(Color.WHITE, j2); //Jugador2 = Blancas
+//            this.jugador1 = new Jugador(Color.BLACK, j1); //Jugador1 = Negras
+//            this.turnoJugador = this.jugador2;
+//        }
         System.out.println();
         try {
             TimeUnit.SECONDS.sleep(2);
