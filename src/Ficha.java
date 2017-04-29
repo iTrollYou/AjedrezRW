@@ -25,8 +25,8 @@ public abstract class Ficha {
         return primerMov;
     }
 
-    public void setPrimerMov(boolean primerMov) {
-        this.primerMov = primerMov;
+    public void setPrimerMov() {
+        this.primerMov = true;
     }
 
     public boolean comprobarIntermedio(int pFila1, int pColumna1, int pFila2, int pColumna2) {
@@ -97,7 +97,7 @@ public abstract class Ficha {
                 if (((Rey)ficha).getEnroqueLargo()){
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;
-                }else if (((Rey)ficha).getEnroqueCorto()){
+                }else if (((Rey)ficha).getEnroqueCorto()){ //Enroque corto
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1];
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = null;
                 }

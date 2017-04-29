@@ -42,9 +42,9 @@ public class Rey extends Ficha {
             }
 
         }
-        if (enroqueLargo(posicionInicial, posicionDestino))
+        else if (enroqueLargo(posicionInicial, posicionDestino))
             correcto = true;
-        if (enroqueCorto(posicionInicial, posicionDestino))
+        else if (enroqueCorto(posicionInicial, posicionDestino))
             correcto = true;
         return correcto;
 
@@ -61,8 +61,8 @@ public class Rey extends Ficha {
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 - 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
             if (torre.comprobarMovimiento(posicionInicial, posicionDestino)) {
-                setPrimerMov(true);
-                enroqueLargo = true;
+                this.setPrimerMov();
+                this.enroqueLargo = true;
                 correcto = true;
             }
 
@@ -79,8 +79,8 @@ public class Rey extends Ficha {
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 + 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
             if (torre.comprobarMovimiento(posicionInicial, posicionDestino)) {
-                setPrimerMov(true);
-                enroqueCorto = true;
+                this.setPrimerMov();
+                this.enroqueCorto = true;
                 correcto = true;
             }
         return correcto;

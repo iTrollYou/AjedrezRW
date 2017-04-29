@@ -88,21 +88,23 @@ public class Tablero {
             if (posicionIncial != null) {
                 Posicion posicionDestino = this.seleccionarPosicionDestino();
                 boolean esRey = false;
-                if (this.matrix[posicionDestino.getFila()][posicionDestino.getColumna()] instanceof Rey) {
-                    esRey = true;
-                }
-                boolean fichaMovida = posicionIncial.realizarMovimiento(posicionDestino);
-                //System.out.println(fichaMovida);
-                if (fichaMovida) {
-
-                    if (esRey) {
-                        System.out.println("Partida terminada. Ha ganado: " + this.turnoJugador.getNombre());
-                        fin = true;
-                    } else {
-                        this.cambiarJugador();
-                        fichero.guardarPartida();
+                if (posicionDestino != null) { //Si no peta arrayOutLimits
+                    if (this.matrix[posicionDestino.getFila()][posicionDestino.getColumna()] instanceof Rey) {
+                        esRey = true;
                     }
+                    boolean fichaMovida = posicionIncial.realizarMovimiento(posicionDestino);
+                    //System.out.println(fichaMovida);
+                    if (fichaMovida) {
 
+                        if (esRey) {
+                            System.out.println("Partida terminada. Ha ganado: " + this.turnoJugador.getNombre());
+                            fin = true;
+                        } else {
+                            this.cambiarJugador();
+                            fichero.guardarPartida();
+                        }
+
+                    }
                 }
             }
         }
@@ -340,7 +342,7 @@ public class Tablero {
             posicion = new Posicion(fila, columna);
         } catch (Exception e) {
             System.out.println("Posicion de destino erronea.");
-            posicion = new Posicion(0, 10); //Erronea
+            posicion = null; //Erronea
         }
         return posicion;
     }

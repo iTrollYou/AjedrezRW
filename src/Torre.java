@@ -21,7 +21,7 @@ public class Torre extends Ficha {
         if ((offsetX == 0) || (offsetY == 0)) {
                 if (this.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)) {
                     correcto = this.posFinalCorrecta(pFila2, pColumna2);
-                    setPrimerMov(true);
+                    this.setPrimerMov();
                 }
             }
 
