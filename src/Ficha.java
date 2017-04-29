@@ -81,86 +81,25 @@ public abstract class Ficha {
     }
 
     public boolean realizarMovimiento(Posicion posicionDestino) {
-
         boolean movimientoCorrecto = this.comprobarMovimiento(this.posicion, posicionDestino);
-        if (movimientoCorrecto) {
+        if(movimientoCorrecto) {
             Ficha[][] matrix = Tablero.getTablero().getMatriz();
             int filaInicial = this.posicion.getFila();
             int columnaInicial = this.posicion.getColumna();
             Ficha ficha = matrix[this.posicion.getFila()][this.posicion.getColumna()];
-
             ficha.posicion.setFila(posicionDestino.getFila());
             ficha.posicion.setColumna(posicionDestino.getColumna());
-
             matrix[posicionDestino.getFila()][posicionDestino.getColumna()] = ficha;
-
             matrix[filaInicial][columnaInicial] = null;
-
-            if (ficha instanceof Rey) { //(2 movs) rey y torre
-                if (((Rey) ficha).getEnroque()) { //ENROQUE LARGO
-                    matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
-                    matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;
-                }
-                //Aqui enroque corto
+            if(ficha instanceof Rey && ((Rey)ficha).getEnroque()) { //Enroque largo
+                matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
+                matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;
             }
 
             Tablero.getTablero().setMatriz(matrix);
-
-
         }
 
         return movimientoCorrecto;
     }
 
-//    private boolean check() { //... falta
-//        Ficha[][] matrix = Tablero.getTablero().getMatriz();
-//        boolean correcto = true;
-//        Posicion rey = null;
-//        bucle:
-//        for (int i = 0; i < 8; i++) { //Localizar los reyes
-//            for (int j = 0; j < 8; j++) {
-//                if (matrix[i][j] instanceof Rey) {
-//                    if (matrix[i][j].getJugador() == Tablero.getTablero().getTurnoJugador()) {
-//                        rey = new Posicion(i, j);
-//                        break bucle;
-//                    }
-//                }
-//            }
-//        }
-//        for (int i = 0; i < 8; i++) { // Comprobar si alguna pieza puede comerlo
-//            for (int j = 0; j < 8; j++) {
-//                Posicion tmp = new Posicion(i, j);
-//                if (matrix[i][j] == null) {
-//
-//                } else if (matrix[i][j] instanceof Peon) {
-//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
-//                        //cambiarJugador();
-//                        if (comprobarMovimiento(tmp, rey))
-//                            correcto = false;
-//                    }
-//                } else if (matrix[i][j] instanceof Reina) {
-//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
-//                        if (comprobarMovimiento(tmp, rey))
-//                            correcto = false;
-//                    }
-//                } else if (matrix[i][j] instanceof Alfil) {
-//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
-//                        if (comprobarMovimiento(tmp, rey))
-//                            correcto = false;
-//                    }
-//                } else if (matrix[i][j] instanceof Caballo) {
-//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
-//                        if (comprobarMovimiento(tmp, rey))
-//                            correcto = false;
-//                    }
-//                } else {
-//                    if (matrix[i][j].getJugador() != Tablero.getTablero().getTurnoJugador()) {
-//                        if (comprobarMovimiento(tmp, rey))
-//                            correcto = false;
-//                    }
-//                }
-//            }
-//        }
-//        return correcto;
-//    }
 }

@@ -50,19 +50,8 @@ public class Fichero {
 
         // Crea un array de strings con la informacion del fichero
         Ficha[][] matrix = Tablero.getTablero().getMatriz();
-
-        String[] texto;
-        String[] jugador1;
-        String[] jugador2;
-        String[] fichas;
-        int turnoJugador;
-
-        Jugador jugad1;
-        Jugador jugad2;
-
-        texto = Fichero.leerFichero(Fichero.filename).split("\n");
-
-        jugador1 = texto[0].split("/");
+        String[] texto = leerFichero(filename).split("\n");
+        String[] jugador1 = texto[0].split("/");
         int colorJugador1 = Integer.parseInt(jugador1[1]);
         Color colorJug1;
         if (colorJugador1 == 0) {
@@ -70,10 +59,10 @@ public class Fichero {
         } else {
             colorJug1 = Color.WHITE;
         }
-        jugad1 = new Jugador(colorJug1, jugador1[0]);
-        Tablero.getTablero().setJugador1(jugad1);
 
-        jugador2 = texto[1].split("/");
+        Jugador jugad1 = new Jugador(colorJug1, jugador1[0]);
+        Tablero.getTablero().setJugador1(jugad1);
+        String[] jugador2 = texto[1].split("/");
         int colorJugador2 = Integer.parseInt(jugador2[1]);
         Color colorJug2;
         if (colorJugador2 == 0) {
@@ -81,18 +70,19 @@ public class Fichero {
         } else {
             colorJug2 = Color.WHITE;
         }
-        jugad2 = new Jugador(colorJug2, jugador2[0]);
-        Tablero.getTablero().setJugador2(jugad2);
 
-        turnoJugador = Integer.parseInt(texto[2]);
+        Jugador jugad2 = new Jugador(colorJug2, jugador2[0]);
+        Tablero.getTablero().setJugador2(jugad2);
+        int turnoJugador = Integer.parseInt(texto[2]);
         if (turnoJugador == 1) {
             Tablero.getTablero().setTurnoJugador(jugad1);
         } else {
             Tablero.getTablero().setTurnoJugador(jugad2);
         }
-        fichas = texto[3].split("/");
 
-        for (int i = 0; i < fichas.length; i = i + 4) {
+        String[] fichas = texto[3].split("/");
+
+        for (int i = 0; i < fichas.length; i += 4) {
 
             // Try para controlar la excepcion en caso de que el archivo lo
             // hayamos escrito mal (sintaxis/ formato incorrecto: ej. se nos ha olvidado un '/')
@@ -139,8 +129,8 @@ public class Fichero {
 
                 // Lo importante
                 matrix[fila][columna] = tipo;
-
                 Tablero.getTablero().setMatriz(matrix);
+
             } catch (Exception e) {
                 System.out.println("Error al intentar leer el archivo. Parece que Ã©ste esta daÃ±ado o mal escrito. Compruebelo.");
             }
@@ -155,7 +145,6 @@ public class Fichero {
         Jugador turnoJugador = Tablero.getTablero().getTurnoJugador(); //Turno jugador actual del tablero
         Ficha[][] matrix = Tablero.getTablero().getMatriz(); //La matriz
 
-        FileWriter archivo;
         File arc = new File(Fichero.filename);
         try {
             // Eliminamos el archivo para que luego sobreesciba la partida
@@ -163,18 +152,17 @@ public class Fichero {
                 arc.delete();
             }
 
-            archivo = new FileWriter(Fichero.filename, true);
-
+            FileWriter archivo = new FileWriter(Fichero.filename, true);
             if (jugad1.getColor() == Color.WHITE) {
-                archivo.write(jugad1.getNombre() + "/" + "1" + "\n"); // 1 significa blanco
+                archivo.write(jugad1.getNombre() + "/1\n"); // 1 significa blanco
             } else {
-                archivo.write(jugad1.getNombre() + "/" + "0" + "\n"); // 0 significa negro
+                archivo.write(jugad1.getNombre() + "/0\n"); // 0 significa negro
             }
 
             if (jugad2.getColor() == Color.WHITE) {
-                archivo.write(jugad2.getNombre() + "/" + "1" + "\n");
+                archivo.write(jugad2.getNombre() + "/1\n");
             } else {
-                archivo.write(jugad2.getNombre() + "/" + "0" + "\n");
+                archivo.write(jugad2.getNombre() + "/0\n");
             }
 
             if (turnoJugador == jugad1) {
