@@ -6,7 +6,6 @@ public class Rey extends Ficha {
     public boolean getEnroqueLargo() {
         return enroqueLargo;
     }
-
     public boolean getEnroqueCorto() {
         return enroqueCorto;
     }
@@ -25,7 +24,6 @@ public class Rey extends Ficha {
         return icono;
     }
 
-    @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
 
         int pFila1 = posicionInicial.getFila();
@@ -38,15 +36,16 @@ public class Rey extends Ficha {
         int absOffsetX = Math.abs(pColumna2 - pColumna1);
         int absOffsetY = Math.abs(pFila2 - pFila1);
 
-        if ((absOffsetX == 1 || absOffsetY == 1) && (this.posFinalCorrecta(pFila2, pColumna2))) {
-            this.setPrimerMov(false);
-            correcto = true;
+        if (pFila1 != pFila2 || pColumna1 != pColumna2) {
+            if (absOffsetX < 2 && absOffsetY < 2) {
+                correcto = posFinalCorrecta(pFila2, pColumna2);
+            }
+
         }
         if (enroqueLargo(posicionInicial, posicionDestino))
             correcto = true;
         if (enroqueCorto(posicionInicial, posicionDestino))
             correcto = true;
-
         return correcto;
 
     }
@@ -62,8 +61,8 @@ public class Rey extends Ficha {
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 - 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
             if (torre.comprobarMovimiento(posicionInicial, posicionDestino)) {
-                this.setPrimerMov(true);
-                this.enroqueLargo = true;
+                setPrimerMov(true);
+                enroqueLargo = true;
                 correcto = true;
             }
 
@@ -80,8 +79,8 @@ public class Rey extends Ficha {
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 + 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
             if (torre.comprobarMovimiento(posicionInicial, posicionDestino)) {
-                this.setPrimerMov(true);
-                this.enroqueCorto = true;
+                setPrimerMov(true);
+                enroqueCorto = true;
                 correcto = true;
             }
         return correcto;
