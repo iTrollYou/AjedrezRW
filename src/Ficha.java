@@ -91,9 +91,15 @@ public abstract class Ficha {
             ficha.posicion.setColumna(posicionDestino.getColumna());
             matrix[posicionDestino.getFila()][posicionDestino.getColumna()] = ficha;
             matrix[filaInicial][columnaInicial] = null;
-            if(ficha instanceof Rey && ((Rey)ficha).getEnroque()) { //Enroque largo
-                matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
-                matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;
+            if(ficha instanceof Rey  ) { //Enroque largo
+                if (((Rey)ficha).getEnroqueLargo()){
+                    matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
+                    matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;
+                }else if (((Rey)ficha).getEnroqueCorto()){
+                    matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1];
+                    matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = null;
+                }
+
             }
 
             Tablero.getTablero().setMatriz(matrix);
