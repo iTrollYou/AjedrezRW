@@ -81,7 +81,7 @@ public class Peon extends Ficha {
         int pColumna = pos.getColumna();
         String ficha = Teclado.leerString("¿Qué ficha quieres ser?: ");
         ficha = ficha.toUpperCase();
-        Ficha fNueva ;
+        Ficha fNueva;
         if (ficha.equals("TORRE")) {
             fNueva = new Torre(Tablero.getTablero().getTurnoJugador(), pos);
             matrix[pFila][pColumna] = fNueva;

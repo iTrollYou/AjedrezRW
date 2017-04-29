@@ -1,4 +1,4 @@
-a/1
-b/0
+aitor/0
+aitor/0
 1
-0/4/REY/1/2/3/PEON/2/6/4/REY/2/7/5/REINA/1/
+0/4/REY/2/2/3/PEON/2/5/5/PEON/2/7/4/REY/2/
