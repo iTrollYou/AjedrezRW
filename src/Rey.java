@@ -37,16 +37,21 @@ public class Rey extends Ficha {
         int absOffsetX = Math.abs(pColumna2 - pColumna1);
         int absOffsetY = Math.abs(pFila2 - pFila1);
 
-        if (enroqueLargo(posicionInicial, posicionDestino))
-            return true;
-        if (enroqueCorto(posicionInicial, posicionDestino))
-            return true;
+
 
         if (pFila1 != pFila2 || pColumna1 != pColumna2) {
             if (absOffsetX < 2 && absOffsetY < 2) {
-                correcto = posFinalCorrecta(pFila2, pColumna2);
-            }
+                if( posFinalCorrecta(pFila2, pColumna2)){
+                    enroqueLargo=false;
+                    enroqueCorto=false;
+                    return true;
+                }
 
+            }
+            if (enroqueLargo(posicionInicial, posicionDestino))
+                return true;
+            if (enroqueCorto(posicionInicial, posicionDestino))
+                return true;
         }
         return correcto;
 
