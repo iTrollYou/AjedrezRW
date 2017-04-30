@@ -6,6 +6,7 @@ public class Rey extends Ficha {
     public boolean getEnroqueLargo() {
         return enroqueLargo;
     }
+
     public boolean getEnroqueCorto() {
         return enroqueCorto;
     }
@@ -36,16 +37,17 @@ public class Rey extends Ficha {
         int absOffsetX = Math.abs(pColumna2 - pColumna1);
         int absOffsetY = Math.abs(pFila2 - pFila1);
 
+        if (enroqueLargo(posicionInicial, posicionDestino))
+            return true;
+        if (enroqueCorto(posicionInicial, posicionDestino))
+            return true;
+
         if (pFila1 != pFila2 || pColumna1 != pColumna2) {
             if (absOffsetX < 2 && absOffsetY < 2) {
                 correcto = posFinalCorrecta(pFila2, pColumna2);
             }
 
         }
-        else if (enroqueLargo(posicionInicial, posicionDestino))
-            correcto = true;
-        else if (enroqueCorto(posicionInicial, posicionDestino))
-            correcto = true;
         return correcto;
 
     }
@@ -60,7 +62,7 @@ public class Rey extends Ficha {
         boolean correcto = false;
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 - 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
-            if (torre.comprobarMovimiento(posicionInicial, posicionDestino)) {
+            if (torre.comprobarIntermedio(posicionInicial.getFila(),posicionInicial.getColumna(), posicionDestino.getFila(),posicionDestino.getColumna())) {
                 this.setPrimerMov();
                 this.enroqueLargo = true;
                 correcto = true;
@@ -78,7 +80,7 @@ public class Rey extends Ficha {
         boolean correcto = false;
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 + 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
-            if (torre.comprobarMovimiento(posicionInicial, posicionDestino)) {
+            if (torre.comprobarIntermedio(posicionInicial.getFila(),posicionInicial.getColumna(), posicionDestino.getFila(),posicionDestino.getColumna())) {
                 this.setPrimerMov();
                 this.enroqueCorto = true;
                 correcto = true;
