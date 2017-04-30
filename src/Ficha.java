@@ -3,14 +3,16 @@ public abstract class Ficha {
     //Atributos
     private Jugador jugador;
     private Posicion posicion;
-    private boolean primerMov ;
+    private boolean primerMov;
 
     public Ficha(Jugador pJugador, Posicion pPosicion) {
         this.jugador = pJugador;
         this.posicion = pPosicion;
         this.primerMov = false;
     }
-    public Ficha(){} //Comprobacion de movimiento reina
+
+    public Ficha() {
+    } //Comprobacion de movimiento reina
 
 
     public abstract boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino);
@@ -39,20 +41,48 @@ public abstract class Ficha {
         int absOffsetX = Math.abs(pColumna2 - pColumna1);
         int absOffsetY = Math.abs(pFila2 - pFila1);
 
-        if (offsetY == 0) { //Horizontal
-            for (int i = 1; i < Math.abs(offsetX); i++) {
-                if (matrix[pFila1][pColumna1 + (offsetX < 0 ? -i : i)] != null)
-                    correcto = false;
+        if (absOffsetX == absOffsetY) {
+            if ((offsetX > 0 && offsetY < 0) || (offsetX < 0 && offsetY > 0)) { //Diagonal con pendiente positiva
+                int filaMenor = Math.min(pFila1, pFila2);
+                int columnaMayor = Math.max(pColumna1, pColumna2);
+                int i = 1;
+                while (i < absOffsetY && correcto) {
+                    if (matrix[filaMenor + i][columnaMayor - i] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
+            } else {//Diagonal con pendiente negativa
+                int filaMenor = Math.min(pFila1, pFila2);
+                int columnaMenor = Math.min(pColumna1, pColumna2);
+
+                int i = 1;
+                while (i < absOffsetY && correcto) {
+                    if (matrix[filaMenor + i][columnaMenor + i] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
             }
-        } else if (offsetX == 0) { //Vertical
-            for (int i = 1; i < absOffsetY; i++) {
-                if (matrix[pFila1 + (offsetY < 0 ? -i : i)][pColumna1] != null)
-                    correcto = false;
-            }
-        } else if (Math.abs(offsetY) == absOffsetX) {//Diagonal
-            for (int i = 1; i < Math.abs(offsetX); i++) {
-                if (matrix[pFila1 + (offsetY < 0 ? -i : i)][pColumna1 + (offsetX < 0 ? -i : i)] != null)
-                    correcto = false;
+        } else {
+            if (absOffsetX == 0) { //Movimiento vertical
+                int filaMenor = Math.min(pFila1, pFila2);
+                int i = 1;
+                while (i < absOffsetY && correcto) {
+                    if (matrix[filaMenor + i][pColumna1] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
+            } else { //Movimiento horizontal
+                int columnaMenor = Math.min(pColumna1, pColumna2);
+                int i = 1;
+                while (i < absOffsetX && correcto) {
+                    if (matrix[pFila1][columnaMenor + i] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
             }
         }
         return correcto;
@@ -84,7 +114,7 @@ public abstract class Ficha {
 
     public boolean realizarMovimiento(Posicion posicionDestino) {
         boolean movimientoCorrecto = this.comprobarMovimiento(this.posicion, posicionDestino);
-        if(movimientoCorrecto) {
+        if (movimientoCorrecto) {
             Ficha[][] matrix = Tablero.getTablero().getMatriz();
             int filaInicial = this.posicion.getFila();
             int columnaInicial = this.posicion.getColumna();
@@ -93,13 +123,20 @@ public abstract class Ficha {
             ficha.posicion.setColumna(posicionDestino.getColumna());
             matrix[posicionDestino.getFila()][posicionDestino.getColumna()] = ficha;
             matrix[filaInicial][columnaInicial] = null;
-            if(ficha instanceof Rey  ) { //Enroque largo
-                if (((Rey)ficha).getEnroqueLargo()){
+            if (ficha instanceof Rey) { //Enroque largo
+                if (((Rey) ficha).getEnroqueLargo()) {
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = null;
-                }else if (((Rey)ficha).getEnroqueCorto()){ //Enroque corto
+                    Ficha torre = matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1];
+                    torre.posicion.setFila(posicionDestino.getFila());
+                    torre.posicion.setColumna(posicionDestino.getColumna() + 1);
+                }
+                if (((Rey) ficha).getEnroqueCorto()) { //Enroque corto
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1] = matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1];
                     matrix[posicionDestino.getFila()][posicionDestino.getColumna() + 1] = null;
+                    Ficha torre = matrix[posicionDestino.getFila()][posicionDestino.getColumna() - 1];
+                    torre.posicion.setFila(posicionDestino.getFila());
+                    torre.posicion.setColumna(posicionDestino.getColumna() - 1);
                 }
 
             }

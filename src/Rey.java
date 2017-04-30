@@ -32,7 +32,7 @@ public class Rey extends Ficha {
         int pColumna1 = posicionInicial.getColumna();
         int pColumna2 = posicionDestino.getColumna();
 
-        boolean correcto = false;
+       // boolean correcto = false;
 
         int absOffsetX = Math.abs(pColumna2 - pColumna1);
         int absOffsetY = Math.abs(pFila2 - pFila1);
@@ -53,7 +53,7 @@ public class Rey extends Ficha {
             if (enroqueCorto(posicionInicial, posicionDestino))
                 return true;
         }
-        return correcto;
+        return false;
 
     }
 
