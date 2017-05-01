@@ -1,10 +1,10 @@
 import java.util.concurrent.TimeUnit;
 
 public class Tablero {
+    private static Tablero miTablero;
     private Jugador jugador1;
     private Jugador jugador2;
     private Jugador turnoJugador;
-    private static Tablero miTablero;
     private Ficha[][] matrix = null;
 
     //private static final String FILENAME = "PGuardada.txt";
