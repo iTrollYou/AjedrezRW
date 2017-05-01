@@ -111,7 +111,7 @@ public abstract class Ficha {
         }
         return tipo;
     }
-
+//
     public boolean realizarMovimiento(Posicion posicionDestino) {
         boolean movimientoCorrecto = this.comprobarMovimiento(this.posicion, posicionDestino);
         if (movimientoCorrecto) {
