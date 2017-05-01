@@ -1,5 +1,5 @@
 
-public class Posicion {
+class Posicion {
     private int fila = 0;
     private int columna = 0;
 

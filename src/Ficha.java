@@ -5,17 +5,17 @@ public abstract class Ficha {
     private Posicion posicion;
     private boolean primerMov;
 
-    public Ficha(Jugador pJugador, Posicion pPosicion) {
+    Ficha(Jugador pJugador, Posicion pPosicion) {
         this.jugador = pJugador;
         this.posicion = pPosicion;
         this.primerMov = false;
     }
 
-    public Ficha() {
+    Ficha() {
     } //Comprobacion de movimiento reina
 
 
-    public abstract boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino);
+    protected abstract boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino);
 
     public abstract String getIcono();
 
@@ -23,15 +23,15 @@ public abstract class Ficha {
         return this.jugador;
     }
 
-    public boolean getPrimerMov() {
+    boolean getPrimerMov() {
         return primerMov;
     }
 
-    public void setPrimerMov() {
+    void setPrimerMov() {
         this.primerMov = true;
     }
 
-    public boolean comprobarIntermedio(int pFila1, int pColumna1, int pFila2, int pColumna2) {
+    boolean comprobarIntermedio(int pFila1, int pColumna1, int pFila2, int pColumna2) {
 
         Ficha[][] matrix = Tablero.getTablero().getMatriz();
 
@@ -88,7 +88,7 @@ public abstract class Ficha {
         return correcto;
     }
 
-    public boolean posFinalCorrecta(int pFila2, int pColumna2) {
+    boolean posFinalCorrecta(int pFila2, int pColumna2) {
         Ficha[][] matrix = Tablero.getTablero().getMatriz();
         return ((matrix[pFila2][pColumna2] == null) || (matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()));
     }

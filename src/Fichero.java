@@ -1,10 +1,11 @@
 import java.io.*;
 
 
+@SuppressWarnings("ALL")
 public class Fichero {
 
     private static Fichero miFichero = null;
-    private static String filename = "PGuardada.txt";
+    private static final String filename = "PGuardada.txt";
 
     //Constructora
     private Fichero() {
@@ -19,11 +20,11 @@ public class Fichero {
         return miFichero;
     }
 
-    public static String leerFichero(String pNombreArchivo) {
+    private static String leerFichero(String pNombreArchivo) {
 
         boolean todoOk = false;
         String linea;
-        String texto = "";
+        StringBuilder texto = new StringBuilder();
 
         while (!todoOk) {
             try {
@@ -31,7 +32,7 @@ public class Fichero {
                 BufferedReader b = new BufferedReader(lector);
 
                 while ((linea = b.readLine()) != null) {
-                    texto = texto + linea + "\n";
+                    texto.append(linea).append("\n");
                 }
 
                 b.close();
@@ -41,7 +42,7 @@ public class Fichero {
             }
         }
 
-        return texto;
+        return texto.toString();
     }
 
     public void cargarPartida() {
@@ -137,6 +138,7 @@ public class Fichero {
         }
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void guardarPartida() {
         // Metodo que guarda la partida en un txt
 
@@ -149,6 +151,7 @@ public class Fichero {
         try {
             // Eliminamos el archivo para que luego sobreesciba la partida
             if (arc.exists()) {
+                //noinspection ResultOfMethodCallIgnored
                 arc.delete();
             }
 

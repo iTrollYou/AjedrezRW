@@ -61,7 +61,7 @@ public class Tablero {
         //correspondientes cambios y muestra actualizado el tablero
 
         Fichero fichero = Fichero.getFichero();
-        String menu = "1";//this.animacionInicial();
+        String menu = this.animacionInicial();//this.animacionInicial();
 
         //Da la opciÃ³n de continuar con la partida guardada en el fichero o iniciar una nueva partida
         switch (menu) {

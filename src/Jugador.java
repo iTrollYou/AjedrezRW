@@ -2,8 +2,8 @@
 public class Jugador {
 
     //Atributos
-    private Color color;
-    private String nombre;
+    private final Color color;
+    private final String nombre;
 
     //Contructora
     public Jugador(Color pColor, String pNombre) {
