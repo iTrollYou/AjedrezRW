@@ -4,7 +4,10 @@ public class Torre extends Ficha {
     public Torre(Jugador pJugador, Posicion pPosicion) {
         super(pJugador, pPosicion);
     }
-    public Torre(){} //Comprobacion de movimiento reina
+
+    public Torre() {
+    }
+
     @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
 
@@ -19,11 +22,11 @@ public class Torre extends Ficha {
         int offsetY = pFila2 - pFila1;
 
         if ((offsetX == 0) || (offsetY == 0)) {
-                if (this.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)) {
-                    correcto = this.posFinalCorrecta(pFila2, pColumna2);
-                    this.setPrimerMov();
-                }
+            if (Tablero.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)) {
+                correcto = Tablero.posFinalCorrecta(pFila2, pColumna2);
+                this.setPrimerMov();
             }
+        }
 
         return correcto;
     }

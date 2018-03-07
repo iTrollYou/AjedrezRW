@@ -41,7 +41,7 @@ public class Rey extends Ficha {
 
         if (pFila1 != pFila2 || pColumna1 != pColumna2) {
             if (absOffsetX < 2 && absOffsetY < 2) {
-                if( posFinalCorrecta(pFila2, pColumna2)){
+                if( Tablero.posFinalCorrecta(pFila2, pColumna2)){
                     enroqueLargo=false;
                     enroqueCorto=false;
                     return true;
@@ -67,7 +67,7 @@ public class Rey extends Ficha {
         boolean correcto = false;
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 - 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
-            if (torre.comprobarIntermedio(posicionInicial.getFila(),posicionInicial.getColumna(), posicionDestino.getFila(),posicionDestino.getColumna())) {
+            if (Tablero.comprobarIntermedio(posicionInicial.getFila(),posicionInicial.getColumna(), posicionDestino.getFila(),posicionDestino.getColumna())) {
                 this.setPrimerMov();
                 this.enroqueLargo = true;
                 correcto = true;
@@ -85,7 +85,7 @@ public class Rey extends Ficha {
         boolean correcto = false;
         Ficha torre = Tablero.getTablero().getMatriz()[pFila1][pColumna2 + 1];
         if (torre != null && !(torre.getPrimerMov()) && !(Tablero.getTablero().getMatriz()[pFila1][pColumna1].getPrimerMov()))
-            if (torre.comprobarIntermedio(posicionInicial.getFila(),posicionInicial.getColumna(), posicionDestino.getFila(),posicionDestino.getColumna())) {
+            if (Tablero.comprobarIntermedio(posicionInicial.getFila(),posicionInicial.getColumna(), posicionDestino.getFila(),posicionDestino.getColumna())) {
                 this.setPrimerMov();
                 this.enroqueCorto = true;
                 correcto = true;

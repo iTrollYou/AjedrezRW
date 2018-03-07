@@ -110,6 +110,7 @@ public class Tablero {
         }
     }
 
+
     private void nuevaPartida() {
 
         //Nombre de jugadores
@@ -118,10 +119,6 @@ public class Tablero {
         String j2 = Teclado.leerString("Nombre jugador 2: ");
 
 
-//        System.out.println("Empieza " + j1);
-//        this.jugador1 = new Jugador(Color.WHITE, j1); //Jugador1 = Blancas
-//        this.jugador2 = new Jugador(Color.BLACK, j2); //Jugador2 = Negras
-//        this.turnoJugador = this.jugador1;
         //Quien empieza aleatorio
         int x = (int) (Math.random() * 100);
         if (x % 2 == 0) {
@@ -164,147 +161,19 @@ public class Tablero {
                 "▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌     ▐░▌       ▐░▌▐░░▌     ▐░░▌\n" +
                 " ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀       ▀         ▀  ▀▀       ▀▀ \n" +
                 "                                                                                                ");
-        //System.out.println("------------------------------------------------------------------------------------------------");
+
         //###Animacion###
 
-        try {
-            TimeUnit.SECONDS.sleep(2);
+        System.out.println("================================================================================================");
 
-            System.out.print("Made ");
-            TimeUnit.MILLISECONDS.sleep(200);
-            System.out.print("by:");
-            TimeUnit.MILLISECONDS.sleep(1000);
-            System.out.println();
-            System.out.print("I");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("b");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("i");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print(" ");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("I");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("r");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("s");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("t");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("o");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("r");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("z");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.println();
-            System.out.print("A");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("n");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("d");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("r");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("e");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print(" ");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("G");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("r");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("c");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("i");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.println();
-            System.out.print("D");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("v");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("i");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("d");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print(" ");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("R");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("e");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("v");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("i");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("l");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("l");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("a");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("s");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.println();
-            System.out.print("O");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("w");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("e");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("n");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print(" ");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("T");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("r");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("i");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("g");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("u");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("e");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("r");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("o");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.print("s");
-            TimeUnit.MILLISECONDS.sleep(130);
-            System.out.println();
+        System.out.println("\033[31m[1]NUEVA PARTIDA  \033[0m");//Rojo
+        System.out.println("\033[31m[2]CARGAR PARTIDA  \033[0m");//No se ve en eclipse, pero en consola si
+        //Menu AMPLIABLE
 
-            System.out.println("================================================================================================");
+        menu = Teclado.leerString("=>");
 
-            System.out.println("\033[31m[1]NUEVA PARTIDA  \033[0m");//Rojo
-            System.out.println("\033[31m[2]CARGAR PARTIDA  \033[0m");//No se ve en eclipse, pero en consola si
-            //Menu AMPLIABLE
+        System.out.println("================================================================================================");
 
-            menu = Teclado.leerString("=>");
-
-            System.out.println("================================================================================================");
-
-
-        } catch (InterruptedException e) {
-
-            System.out.println("***Error en la animación inicial, probablemente la función timeout...***");
-        }
 
         return menu;
 
@@ -360,42 +229,40 @@ public class Tablero {
         }
 //Pruebas
         this.matrix[6][5] = new Peon(jb, new Posicion(6, 5));
-        this.matrix[2][3] = new Peon(jn, new Posicion(2, 3));
-//
         this.matrix[0][0] = new Torre(jb, new Posicion(0, 0));
-//        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
-//        this.matrix[0][2] = new Alfil(jb, new Posicion(0, 2));
-//        this.matrix[0][3] = new Reina(jb, new Posicion(0, 3));
+        this.matrix[0][1] = new Caballo(jb, new Posicion(0, 1));
+        this.matrix[0][2] = new Alfil(jb, new Posicion(0, 2));
+        this.matrix[0][3] = new Reina(jb, new Posicion(0, 3));
         this.matrix[0][4] = new Rey(jb, new Posicion(0, 4));
-//        this.matrix[0][5] = new Alfil(jb, new Posicion(0, 5));
-//        this.matrix[0][6] = new Caballo(jb, new Posicion(0, 6));
+        this.matrix[0][5] = new Alfil(jb, new Posicion(0, 5));
+        this.matrix[0][6] = new Caballo(jb, new Posicion(0, 6));
         this.matrix[0][7] = new Torre(jb, new Posicion(0, 7));
 
-//        this.matrix[1][0] = new Peon(jb, new Posicion(1, 0));
-//        this.matrix[1][1] = new Peon(jb, new Posicion(1, 1));
-//        this.matrix[1][2] = new Peon(jb, new Posicion(1, 2));
-//        this.matrix[1][3] = new Peon(jb, new Posicion(1, 3));
-//        this.matrix[1][4] = new Peon(jb, new Posicion(1, 4));
-//        this.matrix[1][5] = new Peon(jb, new Posicion(1, 5));
-//        this.matrix[1][6] = new Peon(jb, new Posicion(1, 6));
-//        this.matrix[1][7] = new Peon(jb, new Posicion(1, 7));
-//
-//        this.matrix[6][0] = new Peon(jn, new Posicion(6, 0));
-//        this.matrix[6][1] = new Peon(jn, new Posicion(6, 1));
-//        this.matrix[6][2] = new Peon(jn, new Posicion(6, 2));
-//        this.matrix[6][3] = new Peon(jn, new Posicion(6, 3));
-//        this.matrix[6][4] = new Peon(jn, new Posicion(6, 4));
-//        this.matrix[6][5] = new Peon(jn, new Posicion(6, 5));
-//        this.matrix[6][6] = new Peon(jn, new Posicion(6, 6));
-//        this.matrix[6][7] = new Peon(jn, new Posicion(6, 7));
+        this.matrix[1][0] = new Peon(jb, new Posicion(1, 0));
+        this.matrix[1][1] = new Peon(jb, new Posicion(1, 1));
+        this.matrix[1][2] = new Peon(jb, new Posicion(1, 2));
+        this.matrix[1][3] = new Peon(jb, new Posicion(1, 3));
+        this.matrix[1][4] = new Peon(jb, new Posicion(1, 4));
+        this.matrix[1][5] = new Peon(jb, new Posicion(1, 5));
+        this.matrix[1][6] = new Peon(jb, new Posicion(1, 6));
+        this.matrix[1][7] = new Peon(jb, new Posicion(1, 7));
+
+        this.matrix[6][0] = new Peon(jn, new Posicion(6, 0));
+        this.matrix[6][1] = new Peon(jn, new Posicion(6, 1));
+        this.matrix[6][2] = new Peon(jn, new Posicion(6, 2));
+        this.matrix[6][3] = new Peon(jn, new Posicion(6, 3));
+        this.matrix[6][4] = new Peon(jn, new Posicion(6, 4));
+        this.matrix[6][5] = new Peon(jn, new Posicion(6, 5));
+        this.matrix[6][6] = new Peon(jn, new Posicion(6, 6));
+        this.matrix[6][7] = new Peon(jn, new Posicion(6, 7));
 
         this.matrix[7][0] = new Torre(jn, new Posicion(7, 0));
-//        this.matrix[7][1] = new Caballo(jn, new Posicion(7, 1));
-//        this.matrix[7][2] = new Alfil(jn, new Posicion(7, 2));
-//        this.matrix[7][3] = new Reina(jn, new Posicion(7, 3));
+        this.matrix[7][1] = new Caballo(jn, new Posicion(7, 1));
+        this.matrix[7][2] = new Alfil(jn, new Posicion(7, 2));
+        this.matrix[7][3] = new Reina(jn, new Posicion(7, 3));
         this.matrix[7][4] = new Rey(jn, new Posicion(7, 4));
-//        this.matrix[7][5] = new Alfil(jn, new Posicion(7, 5));
-//        this.matrix[7][6] = new Caballo(jn, new Posicion(7, 6));
+        this.matrix[7][5] = new Alfil(jn, new Posicion(7, 5));
+        this.matrix[7][6] = new Caballo(jn, new Posicion(7, 6));
         this.matrix[7][7] = new Torre(jn, new Posicion(7, 7));
     }
 
@@ -502,6 +369,68 @@ public class Tablero {
         System.out.println(linea);
 
 
+    }
+
+    static boolean comprobarIntermedio(int pFila1, int pColumna1, int pFila2, int pColumna2) {
+
+        Ficha[][] matrix = Tablero.getTablero().getMatriz();
+
+        boolean correcto = true;
+        int offsetX = pColumna2 - pColumna1;
+        int offsetY = pFila2 - pFila1;
+        int absOffsetX = Math.abs(pColumna2 - pColumna1);
+        int absOffsetY = Math.abs(pFila2 - pFila1);
+
+        if (absOffsetX == absOffsetY) {
+            if ((offsetX > 0 && offsetY < 0) || (offsetX < 0 && offsetY > 0)) { //Diagonal con pendiente positiva
+                int filaMenor = Math.min(pFila1, pFila2);
+                int columnaMayor = Math.max(pColumna1, pColumna2);
+                int i = 1;
+                while (i < absOffsetY && correcto) {
+                    if (matrix[filaMenor + i][columnaMayor - i] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
+            } else {//Diagonal con pendiente negativa
+                int filaMenor = Math.min(pFila1, pFila2);
+                int columnaMenor = Math.min(pColumna1, pColumna2);
+
+                int i = 1;
+                while (i < absOffsetY && correcto) {
+                    if (matrix[filaMenor + i][columnaMenor + i] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
+            }
+        } else {
+            if (absOffsetX == 0) { //Movimiento vertical
+                int filaMenor = Math.min(pFila1, pFila2);
+                int i = 1;
+                while (i < absOffsetY && correcto) {
+                    if (matrix[filaMenor + i][pColumna1] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
+            } else { //Movimiento horizontal
+                int columnaMenor = Math.min(pColumna1, pColumna2);
+                int i = 1;
+                while (i < absOffsetX && correcto) {
+                    if (matrix[pFila1][columnaMenor + i] != null) {
+                        correcto = false;
+                    }
+                    i++;
+                }
+            }
+        }
+        return correcto;
+    }
+
+    static boolean posFinalCorrecta(int pFila2, int pColumna2) {
+        Ficha[][] matrix = Tablero.getTablero().getMatriz();
+        return ((matrix[pFila2][pColumna2] == null) || (matrix[pFila2][pColumna2].getJugador() != Tablero.getTablero().getTurnoJugador()));
     }
 
 }

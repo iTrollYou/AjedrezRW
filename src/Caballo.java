@@ -8,23 +8,19 @@ public class Caballo extends Ficha {
     @Override
     public boolean comprobarMovimiento(Posicion posicionInicial, Posicion posicionDestino) {
 
-        int pFila1 = posicionInicial.getFila();
-        int pFila2 = posicionDestino.getFila();
-        int pColumna1 = posicionInicial.getColumna();
-        int pColumna2 = posicionDestino.getColumna();
+        int filaIncio = posicionInicial.getFila();
+        int filaFinal = posicionDestino.getFila();
+        int columInicio = posicionInicial.getColumna();
+        int columFinal = posicionDestino.getColumna();
 
         boolean correcto = false;
 
-        int offsetX = pColumna2 - pColumna1;
-        int offsetY = pFila2 - pFila1;
-        int absOffsetX = Math.abs(pColumna2 - pColumna1);
-        int absOffsetY = Math.abs(pFila2 - pFila1);
-
-        if (pFila1 != pFila2 || pColumna1 != pColumna2) {
-            if (offsetX != 0 && offsetY != 0 && absOffsetX + absOffsetY == 3) {
-                correcto = this.posFinalCorrecta(pFila2, pColumna2);
-            }
-
+        int columDist = columFinal - columInicio;
+        int filaDist = filaFinal - filaIncio;
+        if (((Math.abs(filaDist) == 2) && (Math.abs(columDist) == 1)) ||
+                ((Math.abs(filaDist) == 1) && (Math.abs(columDist) == 2))) {
+            if (Tablero.posFinalCorrecta(columInicio, columFinal))
+                correcto = true;
         }
         return correcto;
     }
