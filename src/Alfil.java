@@ -18,8 +18,8 @@ public class Alfil extends Ficha {
         int filaDist = pFila2 - pFila1;
 
         if (Math.abs(columDist) == Math.abs(filaDist)) {
-            if (this.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)
-                    && this.posFinalCorrecta(pFila2, pColumna2))
+            if (Tablero.comprobarIntermedio(pFila1, pColumna1, pFila2, pColumna2)
+                    && Tablero.posFinalCorrecta(pFila2, pColumna2))
                 correcto = true;
         }
         return correcto;
